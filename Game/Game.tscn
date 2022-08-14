@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Game/Board.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sprites/board.jpg" type="Texture" id=2]
+
+[node name="Game" type="Node2D"]
+
+[node name="Board" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+offset = Vector2( 256, 256 )
+script = ExtResource( 1 )
