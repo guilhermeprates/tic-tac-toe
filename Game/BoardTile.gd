@@ -1,17 +1,8 @@
-extends Node
-class_name BoardTile
+extends Sprite
 
-signal set_symbol
-
-var symbol: String
-
-func _init():
-	self.symbol = ''
-
-func set_position(position: Vector2) -> void:
-	self.position = position
-
-func set_symbol(new_symbol: String) -> void:
-	self.symbol = new_symbol
-	emit_signal("set_symbol")
+func _input(event):
+	if event.is_action_pressed("mouse_left_click"):
+		if get_rect().has_point(to_local(event.position)):
+			if !visible:
+				show()
 
