@@ -12,12 +12,12 @@ A tic-tac-toe game made with [Godot](https://godotengine.org/).
 
 - [ ] Start screen
 
-- [ ] Win/Loss counter
+- [ ] HUD & Win/Loss counter 
 
 - [ ] AI (Minimax)
 
-- [ ] Add some sound 
+- [ ] PVP
 
-- [ ] My own assets
+- [ ] Sound
 
-- [ ] PvP
+- [ ] Custom assets

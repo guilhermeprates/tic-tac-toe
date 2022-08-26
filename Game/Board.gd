@@ -3,6 +3,8 @@ class_name Board
 
 const BOARD_DIMENSIONS = Vector2(3, 3)
 
+enum PLAYER { X, O }
+
 func _ready():
 	build_board()
 
