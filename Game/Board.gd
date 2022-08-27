@@ -1,23 +1,21 @@
 extends Node2D
 class_name Board
 
-enum Player { X, O }
-
 const BOARD_DIMENSIONS = Vector2(3, 3)
 
 var board
 var tiles
 var current_player
-var players = [ Player.X, Player.O ]
+var players = [ Player.Symbol.X, Player.Symbol.O ]
 var random_number_generator = RandomNumberGenerator.new()
 
 func _ready():
 	var random = random_number_generator.randf_range(0, players.size())
 	current_player = players[random]
-	set_nodes_observers()
+	set_observers()
 	build_board()
 
-func set_nodes_observers():
+func set_observers():
 	tiles = []
 	var childrens = get_children()
 	for node in childrens:
@@ -35,16 +33,18 @@ func build_board():
 	print(board)	 
 
 func update_current_player():
-	if current_player == Player.X:
-		current_player = Player.O
+	if current_player == Player.Symbol.X:
+		current_player = Player.Symbol.O
 	else:
-		current_player = Player.X
+		current_player = Player.Symbol.X
 		
 func update_board(line, column):
 	print("%d,%d" % [line, column])
-	update_current_player()
 	for tile in tiles:
 		if tile.line == line and tile.column == column:
-			var symbol = Player.keys()[current_player]
-			tile.set_symbol(symbol)
+			tile.set_symbol(current_player)
+	check_winner()
+	update_current_player()
 	
+func check_winner():
+	pass
