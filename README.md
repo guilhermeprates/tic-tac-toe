@@ -6,7 +6,7 @@ A tic-tac-toe game made with [Godot](https://godotengine.org/).
 
 - [x] Board builder
 
-- [ ] Turn based system
+- [x] Turn based system
 
 - [ ] Winner checker
 

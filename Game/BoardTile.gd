@@ -14,6 +14,14 @@ func _ready():
 	
 func _input_event(_viewport, event, _shape_idx):
 	if event.is_action_pressed("mouse_left_click"):
-		print("%d,%d" % [line, column])
 		sprite.texture = player_symbol[1];
 		emit_signal("boardtile_clicked", line, column)
+
+func set_symbol(symbol):
+	var index = 1
+	if symbol == "X":
+		index = 2
+	sprite.texture = player_symbol[index];
+
+func get_board_position() -> Vector2:
+	return Vector2(line, column)
