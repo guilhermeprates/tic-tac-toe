@@ -8,6 +8,8 @@ A tic-tac-toe game made with [Godot](https://godotengine.org/).
 
 - [ ] Turn based system
 
+- [ ] Winner checker
+
 - [ ] Dummy AI (for testing purposes)
 
 - [ ] Start screen
