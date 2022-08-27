@@ -20,9 +20,15 @@ func set_observers():
 	var childrens = get_children()
 	for node in childrens:
 		if node is BoardTile:
-			node.connect("boardtile_clicked", self, "update_board")
+			node.connect("boardtile_clicked", self, "boardtile_clicked")
 			tiles.append(node)
 			print(node.get_board_position())
+
+func reset_game():
+	var childrens = get_children()
+	for node in childrens:
+		if node is BoardTile:
+			node.set_symbol(Player.Symbol.None)
 
 func build_board():
 	board = []
@@ -37,14 +43,15 @@ func update_current_player():
 		current_player = Player.Symbol.O
 	else:
 		current_player = Player.Symbol.X
-		
-func update_board(line, column):
+
+func boardtile_clicked(line, column):
 	print("%d,%d" % [line, column])
 	for tile in tiles:
 		if tile.line == line and tile.column == column:
-			tile.set_symbol(current_player)
+			if tile.symbol == Player.Symbol.NONE:
+				tile.set_symbol(current_player)
+				update_current_player()
 	check_winner()
-	update_current_player()
-	
+
 func check_winner():
 	pass
