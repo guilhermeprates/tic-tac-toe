@@ -1,9 +1,17 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Assets/Sprites/O.png" type="Texture" id=1]
 [ext_resource path="res://Game/BoardTile.gd" type="Script" id=2]
 
-[node name="BoardTile" type="Sprite"]
-texture = ExtResource( 1 )
-offset = Vector2( 83, 80 )
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 72.5, 72.5 )
+
+[node name="BoardTile" type="Area2D"]
 script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 73, 73 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 72.5, 73 )
+scale = Vector2( 0.91195, 0.948052 )

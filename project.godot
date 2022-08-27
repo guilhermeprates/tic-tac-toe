@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Board",
 "language": "GDScript",
 "path": "res://Game/Board.gd"
+}, {
+"base": "Area2D",
+"class": "BoardTile",
+"language": "GDScript",
+"path": "res://Game/BoardTile.gd"
 } ]
 _global_script_class_icons={
-"Board": ""
+"Board": "",
+"BoardTile": ""
 }
 
 [application]
