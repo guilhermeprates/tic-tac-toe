@@ -6,9 +6,9 @@ A tic-tac-toe game made with [Godot](https://godotengine.org/).
 
 - [x] Board builder
 
-- [x] Turn based system
+- [x] Turn-based system
 
-- [ ] Winner checker
+- [x] Winner checker
 
 - [ ] Dummy AI (for testing purposes)
 
@@ -18,7 +18,9 @@ A tic-tac-toe game made with [Godot](https://godotengine.org/).
 
 - [ ] AI (Minimax)
 
-- [ ] PVP
+- [ ] Difficulty levels
+
+- [x] PVP
 
 - [ ] Sound
 
