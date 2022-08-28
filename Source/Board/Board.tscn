@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Source/Board/BoardTile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Source/Board/Board.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Sprites/board.jpg" type="Texture" id=4]
+
+[node name="Board" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Board" type="Sprite" parent="."]
+position = Vector2( 256, 69 )
+texture = ExtResource( 4 )
+offset = Vector2( 0, 185 )
+
+[node name="BoardTile0" parent="." instance=ExtResource( 1 )]
+position = Vector2( 15, 14 )
+
+[node name="BoardTile1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 182, 14 )
+column = 1
+
+[node name="BoardTile2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 351, 14 )
+column = 2
+
+[node name="BoardTile3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 14, 181 )
+line = 1
+
+[node name="BoardTile4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 183, 181 )
+line = 1
+column = 1
+
+[node name="BoardTile5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 351, 181 )
+line = 1
+column = 2
+
+[node name="BoardTile6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 15, 348 )
+line = 2
+
+[node name="BoardTile7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 183, 348 )
+line = 2
+column = 1
+
+[node name="BoardTile8" parent="." instance=ExtResource( 1 )]
+position = Vector2( 351, 348 )
+line = 2
+column = 2
