@@ -10,9 +10,9 @@ A tic-tac-toe game made with [Godot](https://godotengine.org/).
 
 - [x] Winner checker
 
-- [ ] Dummy AI (for testing purposes)
+- [x] Dummy AI (for testing purposes)
 
-- [ ] Start screen
+- [x] Start screen
 
 - [ ] HUD & Win/Loss counter 
 

@@ -1,5 +1,7 @@
 extends Node
 
+var difficulty_level = Difficulty.Level.Normal
+var ai_enable = true
 var current_scene = null
 
 func _ready():

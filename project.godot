@@ -12,29 +12,45 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Board",
 "language": "GDScript",
-"path": "res://Game/Board.gd"
+"path": "res://Source/Board/Board.gd"
 }, {
 "base": "Area2D",
 "class": "BoardTile",
 "language": "GDScript",
-"path": "res://Game/BoardTile.gd"
+"path": "res://Source/Board/BoardTile.gd"
+}, {
+"base": "Object",
+"class": "Difficulty",
+"language": "GDScript",
+"path": "res://Source/Difficulty/Difficulty.gd"
+}, {
+"base": "Object",
+"class": "Dummy",
+"language": "GDScript",
+"path": "res://Source/AI/Dummy.gd"
 }, {
 "base": "Object",
 "class": "Player",
 "language": "GDScript",
-"path": "res://Game/Player.gd"
+"path": "res://Source/Player/Player.gd"
 } ]
 _global_script_class_icons={
 "Board": "",
 "BoardTile": "",
+"Difficulty": "",
+"Dummy": "",
 "Player": ""
 }
 
 [application]
 
 config/name="Tic-Tac-Toe"
-run/main_scene="res://Game/Game.tscn"
+run/main_scene="res://Source/Start/Start.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Game="*res://Source/Game.gd"
 
 [display]
 
