@@ -1,27 +1,28 @@
 extends Node2D
 class_name Board
 
-const BOARD_DIMENSIONS = Vector2(3, 3)
-
-var board
-var tiles
-var current_player
-var players = [ Player.Symbol.X, Player.Symbol.O ]
-var random_number_generator = RandomNumberGenerator.new()
+var board = []
+var game_ended = false
+var current_player = Player.Symbol.None
 
 func _ready():
+	var players = [ Player.Symbol.X, Player.Symbol.O ]
+	var random_number_generator = RandomNumberGenerator.new()
 	var random = random_number_generator.randf_range(0, players.size())
 	current_player = players[random]
-	set_observers()
 	build_board()
 
-func set_observers():
-	tiles = []
+func build_board():
+	board = []
 	var childrens = get_children()
 	for node in childrens:
 		if node is BoardTile:
 			node.connect("boardtile_clicked", self, "boardtile_clicked")
-			tiles.append(node)
+			if range(board.size()).has(node.line):
+				board[node.line].append(node)
+			else:
+				board.append([])
+				board[node.line].append(node)
 			print(node.get_board_position())
 
 func reset_game():
@@ -30,14 +31,6 @@ func reset_game():
 		if node is BoardTile:
 			node.set_symbol(Player.Symbol.None)
 
-func build_board():
-	board = []
-	for line in range(BOARD_DIMENSIONS.x):
-		board.append([])
-		for column in range(BOARD_DIMENSIONS.y):
-			board[line].append(column)
-	print(board)	 
-
 func update_current_player():
 	if current_player == Player.Symbol.X:
 		current_player = Player.Symbol.O
@@ -45,13 +38,51 @@ func update_current_player():
 		current_player = Player.Symbol.X
 
 func boardtile_clicked(line, column):
+	if game_ended:
+		reset_game()
 	print("%d,%d" % [line, column])
-	for tile in tiles:
-		if tile.line == line and tile.column == column:
-			if tile.symbol == Player.Symbol.NONE:
-				tile.set_symbol(current_player)
-				update_current_player()
-	check_winner()
+	var tile = board[line][column]
+	if tile.symbol == Player.Symbol.None:
+		tile.set_symbol(current_player)
+		check_winner()
+		update_current_player()
 
 func check_winner():
-	pass
+	for line in range(3):
+		if check_line(line):
+			print("Winner")
+			print(current_player)
+			game_ended = true
+	for column in range(3):
+		if check_column(column):
+			print("Winner")
+			print(current_player)
+			game_ended = true
+	for diagonal in [0, 2]:
+		if check_diagonal(diagonal):
+			print("Winner")
+			print(current_player)
+			game_ended = true
+	
+func check_line(line) -> bool:
+	for column in range(3):
+		if board[line][column].symbol != current_player:
+			return false;
+	return true
+	
+func check_column(column) -> bool:
+	for line in range(3):
+		if (board[line][column].symbol != current_player):
+			return false
+	return true
+
+func check_diagonal(diagonal) -> bool:
+	for line in range(3):
+		var column
+		if diagonal == 0:
+			column = line
+		else:
+			column = 3 - line - 1
+		if board[line][column].symbol != current_player:
+			return false;
+	return true;

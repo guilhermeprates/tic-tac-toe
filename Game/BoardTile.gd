@@ -7,7 +7,7 @@ export(int) var line
 export(int) var column
 export(Array, Texture) var symbol_textures
 
-var symbol = Player.Symbol.NONE
+var symbol = Player.Symbol.None
 var sprite
 
 func _ready():
