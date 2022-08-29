@@ -53,6 +53,8 @@ func boardtile_clicked(line, column):
 		tile.set_symbol(current_player)
 		check_winner()
 		update_current_player()
+	else:
+		return
 	
 	if !game_over:
 		var tile_ai = Dummy.get_move(board)
