@@ -11,7 +11,6 @@ func _ready():
 	var random_number_generator = RandomNumberGenerator.new()
 	random_number_generator.randomize()
 	var random = random_number_generator.randi_range(0, players.size() -1)
-	print(random)
 	current_player = players[random]
 	build_board()
 
