@@ -22,17 +22,17 @@ _global_script_classes=[ {
 "base": "Object",
 "class": "Difficulty",
 "language": "GDScript",
-"path": "res://Source/Difficulty/Difficulty.gd"
+"path": "res://Source/Classes/Difficulty.gd"
 }, {
 "base": "Object",
 "class": "Dummy",
 "language": "GDScript",
-"path": "res://Source/AI/Dummy.gd"
+"path": "res://Source/Classes/Dummy.gd"
 }, {
 "base": "Object",
 "class": "Player",
 "language": "GDScript",
-"path": "res://Source/Player/Player.gd"
+"path": "res://Source/Classes/Player.gd"
 } ]
 _global_script_class_icons={
 "Board": "",
@@ -45,12 +45,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Tic-Tac-Toe"
-run/main_scene="res://Source/Start/Start.tscn"
+run/main_scene="res://Source/StartMenu/StartMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-Game="*res://Source/Game.gd"
+Global="*res://Source/Autoload/Global.gd"
 
 [display]
 

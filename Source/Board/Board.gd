@@ -20,7 +20,7 @@ func build_board():
 	var childrens = get_children()
 	for node in childrens:
 		if node is BoardTile:
-			node.connect("boardtile_clicked", self, "boardtile_clicked")
+			node.connect("boardtile_clicked", self, "on_boardtile_clicked")
 			if range(board.size()).has(node.line):
 				board[node.line].append(node)
 			else:
@@ -41,7 +41,7 @@ func update_current_player():
 	else:
 		current_player = Player.Symbol.X
 
-func boardtile_clicked(line, column):
+func on_boardtile_clicked(line, column):
 	print("%d,%d" % [line, column])
 	
 	if game_over:
