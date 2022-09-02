@@ -1,6 +1,6 @@
 extends Node
 
-var difficulty_level = Difficulty.Level.Normal
+var level = Difficulty.Level.Normal
 var ai_enable = true
 var current_scene = null
 
@@ -36,3 +36,6 @@ func _deferred_goto_scene(path):
 
 	# Optionally, to make it compatible with the SceneTree.change_scene() API.
 	get_tree().set_current_scene(current_scene)
+
+func set_level(new_value):
+	self.level = new_value

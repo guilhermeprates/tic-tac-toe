@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Assets/Themes/Retro/theme.tres" type="Theme" id=1]
+[ext_resource path="res://Source/DifficultyMenu/DifficultyMenu.gd" type="Script" id=2]
+
+[node name="DifficultyMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="Background" type="ColorRect" parent="."]
+margin_right = 511.0
+margin_bottom = 511.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -65.5
+margin_top = -52.5
+margin_right = 65.5
+margin_bottom = 52.5
+alignment = 1
+
+[node name="EasyButton" type="Button" parent="VBoxContainer"]
+margin_top = 17.0
+margin_right = 131.0
+margin_bottom = 38.0
+theme = ExtResource( 1 )
+text = "Easy"
+
+[node name="NormalButton" type="Button" parent="VBoxContainer"]
+margin_top = 42.0
+margin_right = 131.0
+margin_bottom = 63.0
+theme = ExtResource( 1 )
+text = "Normal"
+
+[node name="HardButton" type="Button" parent="VBoxContainer"]
+margin_top = 67.0
+margin_right = 131.0
+margin_bottom = 88.0
+theme = ExtResource( 1 )
+text = "Hard"
