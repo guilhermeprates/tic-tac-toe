@@ -30,6 +30,16 @@ _global_script_classes=[ {
 "path": "res://Source/Classes/Dummy.gd"
 }, {
 "base": "Object",
+"class": "Minimax",
+"language": "GDScript",
+"path": "res://Source/Classes/Minimax.gd"
+}, {
+"base": "Object",
+"class": "Mode",
+"language": "GDScript",
+"path": "res://Source/Classes/Mode.gd"
+}, {
+"base": "Object",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Source/Classes/Player.gd"
@@ -39,6 +49,8 @@ _global_script_class_icons={
 "BoardTile": "",
 "Difficulty": "",
 "Dummy": "",
+"Minimax": "",
+"Mode": "",
 "Player": ""
 }
 

@@ -20,6 +20,8 @@ func goto_scene(path):
 
 	call_deferred("_deferred_goto_scene", path)
 
+func quit():
+	get_tree().quit()
 
 func _deferred_goto_scene(path):
 	# It is now safe to remove the current scene
