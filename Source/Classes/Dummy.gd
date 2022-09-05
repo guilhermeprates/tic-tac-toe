@@ -1,7 +1,6 @@
-extends Object
-class_name Dummy
+class_name Dummy extends Object
 
-static func get_move(board) -> BoardTile:
+func get_move(board) -> BoardTile:
 	var empty_tiles = []
 	for line in range(3):
 		for column in range(3):
@@ -12,5 +11,4 @@ static func get_move(board) -> BoardTile:
 	random_number_generator.randomize()
 	var random = random_number_generator.randi_range(0, empty_tiles.size() -1)
 	var tile = empty_tiles[random]
-	print(tile.get_board_position())
 	return tile

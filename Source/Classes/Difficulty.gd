@@ -1,4 +1,3 @@
-extends Object
-class_name Difficulty
+class_name Difficulty extends Object
 
 enum Level { Easy = 0, Normal = 1, Hard = 2 }

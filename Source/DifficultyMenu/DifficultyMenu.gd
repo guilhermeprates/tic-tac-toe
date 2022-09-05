@@ -1,4 +1,4 @@
-extends Control
+class_name DifficultyMenu extends Control
 
 var easy_button: Button
 var normal_button: Button
@@ -14,7 +14,7 @@ func _ready() -> void:
 	setup_connections()
 	grab_focus_on_current_level_button()
 
-func grab_focus_on_current_level_button():
+func grab_focus_on_current_level_button() -> void:
 	match (Global.level):
 		Difficulty.Level.Easy:
 			easy_button.grab_focus()
@@ -23,22 +23,22 @@ func grab_focus_on_current_level_button():
 		Difficulty.Level.Hard:
 			hard_button.grab_focus()
 
-func on_focus_exited():
+func on_focus_exited() -> void:
 	audio_stream_player.play()
 	
-func on_easy_button_pressed():
+func on_easy_button_pressed() -> void:
 	Global.set_level(Difficulty.Level.Easy)
 	Global.goto_scene("res://Source/StartMenu/StartMenu.tscn")
 
-func on_normal_button_pressed():
+func on_normal_button_pressed() -> void:
 	Global.set_level(Difficulty.Level.Normal)
 	Global.goto_scene("res://Source/StartMenu/StartMenu.tscn")
 	
-func on_hard_button_pressed():
+func on_hard_button_pressed() -> void:
 	Global.set_level(Difficulty.Level.Hard)
 	Global.goto_scene("res://Source/StartMenu/StartMenu.tscn")
 
-func setup_connections():
+func setup_connections() -> void:
 	# warning-ignore:return_value_discarded
 	easy_button.connect("pressed", self, "on_easy_button_pressed")
 	# warning-ignore:return_value_discarded

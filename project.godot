@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Source/Classes/Difficulty.gd"
 }, {
+"base": "Control",
+"class": "DifficultyMenu",
+"language": "GDScript",
+"path": "res://Source/DifficultyMenu/DifficultyMenu.gd"
+}, {
 "base": "Object",
 "class": "Dummy",
 "language": "GDScript",
@@ -35,23 +40,24 @@ _global_script_classes=[ {
 "path": "res://Source/Classes/Minimax.gd"
 }, {
 "base": "Object",
-"class": "Mode",
-"language": "GDScript",
-"path": "res://Source/Classes/Mode.gd"
-}, {
-"base": "Object",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Source/Classes/Player.gd"
+}, {
+"base": "Control",
+"class": "StartMenu",
+"language": "GDScript",
+"path": "res://Source/StartMenu/StartMenu.gd"
 } ]
 _global_script_class_icons={
 "Board": "",
 "BoardTile": "",
 "Difficulty": "",
+"DifficultyMenu": "",
 "Dummy": "",
 "Minimax": "",
-"Mode": "",
-"Player": ""
+"Player": "",
+"StartMenu": ""
 }
 
 [application]

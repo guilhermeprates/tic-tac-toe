@@ -23,6 +23,9 @@ func goto_scene(path):
 func quit():
 	get_tree().quit()
 
+func set_level(new_value):
+	self.level = new_value
+	
 func _deferred_goto_scene(path):
 	# It is now safe to remove the current scene
 	current_scene.free()
@@ -39,5 +42,3 @@ func _deferred_goto_scene(path):
 	# Optionally, to make it compatible with the SceneTree.change_scene() API.
 	get_tree().set_current_scene(current_scene)
 
-func set_level(new_value):
-	self.level = new_value
