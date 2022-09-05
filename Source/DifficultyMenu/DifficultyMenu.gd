@@ -1,16 +1,11 @@
 class_name DifficultyMenu extends Control
 
-var easy_button: Button
-var normal_button: Button
-var hard_button: Button
-var audio_stream_player: AudioStreamPlayer
+onready var easy_button: Button = $VBoxContainer/EasyButton
+onready var normal_button: Button = $VBoxContainer/NormalButton
+onready var hard_button: Button = $VBoxContainer/HardButton
+onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready() -> void:
-	audio_stream_player = get_node("AudioStreamPlayer")
-	var container = get_node("VBoxContainer")
-	easy_button = container.get_node("EasyButton")
-	normal_button = container.get_node("NormalButton")
-	hard_button = container.get_node("HardButton")
 	setup_connections()
 	grab_focus_on_current_level_button()
 

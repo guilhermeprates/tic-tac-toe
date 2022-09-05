@@ -1,16 +1,11 @@
 class_name StartMenu extends Control
 
-var start_button: Button
-var difficulty_button: Button
-var quit_button: Button
-var audio_stream_player: AudioStreamPlayer
+onready var start_button: Button = $VBoxContainer/StartButton
+onready var difficulty_button: Button = $VBoxContainer/DifficultyButton
+onready var quit_button: Button = $VBoxContainer/QuitButton
+onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready() -> void:
-	audio_stream_player = get_node("AudioStreamPlayer")
-	var container = get_node("VBoxContainer")
-	start_button = container.get_node("StartButton")
-	difficulty_button = container.get_node("DifficultyButton")
-	quit_button = container.get_node("QuitButton")
 	setup_connections()
 	start_button.grab_focus()
 
