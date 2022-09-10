@@ -1,6 +1,6 @@
 class_name BoardTile extends Area2D
 
-signal boardtile_clicked
+signal boardtile_selected
 
 export(int) var line
 export(int) var column
@@ -10,12 +10,9 @@ onready var sprite: Sprite = $Sprite
 
 var symbol: int = 0
 
-func _ready() -> void:
-	pass
-	
-func _input_event(_viewport, event, _shape_idx) -> void:
+func _input_event(_viewport: Object, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_action_pressed("mouse_left_click"):
-		emit_signal("boardtile_clicked", line, column)
+		emit_signal("boardtile_selected", line, column)
 
 func _to_string() -> String:
 	return "%d,%d" % [line, column]
