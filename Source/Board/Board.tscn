@@ -5,10 +5,11 @@
 [ext_resource path="res://Assets/Sprites/board.jpg" type="Texture" id=4]
 
 [node name="Board" type="Node2D"]
+position = Vector2( 43, 84 )
 script = ExtResource( 3 )
 
 [node name="Board" type="Sprite" parent="."]
-position = Vector2( 256, 69 )
+position = Vector2( 255, 69 )
 texture = ExtResource( 4 )
 offset = Vector2( 0, 185 )
 

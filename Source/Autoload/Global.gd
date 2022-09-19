@@ -1,7 +1,8 @@
 extends Node
 
-var level = Difficulty.Level.Normal
-var ai_enable = true
+var level: int = Difficulty.Level.Normal
+var player_one_score: int = 0
+var player_two_score: int = 0
 var current_scene = null
 
 func _ready():
@@ -20,11 +21,14 @@ func goto_scene(path):
 
 	call_deferred("_deferred_goto_scene", path)
 
-func quit():
-	get_tree().quit()
-
 func set_level(new_value):
 	self.level = new_value
+
+func set_score(new_value):
+	self.score = new_value
+
+func quit():
+	get_tree().quit()
 	
 func _deferred_goto_scene(path):
 	# It is now safe to remove the current scene

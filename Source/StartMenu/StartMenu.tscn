@@ -1,13 +1,44 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Assets/Themes/Main/theme.tres" type="Theme" id=1]
+[ext_resource path="res://Assets/Fonts/Retro Gaming.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Source/StartMenu/StartMenu.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Audio/hover.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Sprites/tic-tac-toe.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Themes/Main/theme.tres" type="Theme" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+outline_color = Color( 0.960784, 0.92549, 0.0431373, 1 )
+use_mipmaps = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="Theme" id=8]
+default_font = SubResource( 1 )
+Button/colors/font_color = Color( 0.545098, 0.67451, 0.0588235, 1 )
+Button/colors/font_color_disabled = Color( 0.545098, 0.67451, 0.0588235, 0.509804 )
+Button/colors/font_color_focus = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+Button/colors/font_color_hover = Color( 0.0588235, 0.219608, 0.0588235, 1 )
+Button/colors/font_color_pressed = Color( 0.545098, 0.67451, 0.0588235, 1 )
+Button/fonts/font = SubResource( 1 )
+Button/styles/disabled = SubResource( 2 )
+Button/styles/focus = SubResource( 3 )
+Button/styles/hover = SubResource( 6 )
+Button/styles/normal = SubResource( 5 )
+Button/styles/pressed = SubResource( 7 )
 
 [node name="StartMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 1 )
+theme = SubResource( 8 )
 script = ExtResource( 2 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -18,11 +49,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -255.5
-margin_top = -254.0
-margin_right = 255.5
-margin_bottom = 254.0
+margin_left = -300.0
+margin_top = -300.0
+margin_right = 300.0
+margin_bottom = 300.0
 color = Color( 0, 0, 0, 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 293, 254 )
+scale = Vector2( 1, 0.998047 )
+texture = ExtResource( 4 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
@@ -39,7 +75,7 @@ margin_top = 67.0
 margin_right = 128.0
 margin_bottom = 88.0
 focus_neighbour_top = NodePath("../QuitButton")
-theme = ExtResource( 1 )
+theme = ExtResource( 5 )
 toggle_mode = true
 text = " Start Game"
 flat = true
@@ -48,7 +84,7 @@ flat = true
 margin_top = 92.0
 margin_right = 128.0
 margin_bottom = 113.0
-theme = ExtResource( 1 )
+theme = ExtResource( 5 )
 text = "Difficulty"
 flat = true
 
@@ -57,6 +93,6 @@ margin_top = 117.0
 margin_right = 128.0
 margin_bottom = 138.0
 focus_neighbour_bottom = NodePath("../StartButton")
-theme = ExtResource( 1 )
+theme = ExtResource( 5 )
 text = "Quit"
 flat = true
