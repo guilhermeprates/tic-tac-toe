@@ -14,9 +14,9 @@ A tic-tac-toe game made with [Godot](https://godotengine.org/).
 
 - [x] Start screen
 
-- [ ] HUD & Win/Loss counter 
+- [x] HUD
 
-- [ ] AI (Minimax)
+- [x] AI (Minimax)
 
 - [ ] Difficulty levels
 
@@ -24,4 +24,4 @@ A tic-tac-toe game made with [Godot](https://godotengine.org/).
 
 - [ ] Sound
 
-- [ ] Custom assets
+- [x] Custom assets
