@@ -38,6 +38,7 @@ func reset_game() -> void:
 			board[line][column] = Player.Symbol.None
 	for tile in tiles:
 		tile.set_symbol(Player.Symbol.None)
+	current_player = player_one
 	game_over = false
 
 func update_current_player() -> void:
@@ -54,16 +55,15 @@ func update_tile_symbol(line: int, column: int, symbol: int) -> void:
 func on_boardtile_selected(line: int, column: int) -> void:
 	print("%d,%d" % [line, column])
 	
-	if game_over:
+	if game_over: 
 		reset_game()
 		return
-#
+			
 	var symbol = board[line][column]
 	if symbol == Player.Symbol.None:
 		board[line][column] = current_player.get_symbol()
 		update_tile_symbol(line, column, current_player.get_symbol())
 		check_winner()
-		if game_over: return
 		update_current_player()
 	else:
 		return
@@ -74,7 +74,6 @@ func on_boardtile_selected(line: int, column: int) -> void:
 		board[move.x][move.y] = current_player.get_symbol()
 		update_tile_symbol(move.x, move.y, current_player.get_symbol())
 		check_winner()
-		if game_over: return
 		update_current_player()
 
 func check_winner():
