@@ -1,11 +1,11 @@
 extends Control
 
-onready var x_button: Button = $Background/HBoxContainer/XButton
-onready var o_button: Button = $Background/HBoxContainer/OButton
+onready var x_button: Button = $HBoxContainer/XButton
+onready var o_button: Button = $HBoxContainer/OButton
 onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready() -> void:
-	setup_connections()
+	setup_connections() 
 
 func on_mouse_entered() -> void:
 	audio_stream_player.play()
@@ -14,7 +14,7 @@ func on_x_button_pressed() -> void:
 	Global.goto_scene("res://Source/Board/Board.tscn")
 	
 func on_o_button_pressend() -> void:
-	Global.goto_scene("res://Source/Board/Board.tscn")
+		Global.goto_scene("res://Source/Board/Board.tscn")
 
 func setup_connections() -> void:
 	# warning-ignore:return_value_discarded
