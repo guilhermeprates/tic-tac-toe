@@ -13,15 +13,15 @@ func on_mouse_entered() -> void:
 	
 func on_easy_button_pressed() -> void:
 	Global.set_game_level(Game.Level.Easy)
-	Global.goto_scene("res://Source/Board/Board.tscn")
+	Global.goto_scene("res://Source/SymbolMenu/SymbolMenu.tscn")
 
 func on_normal_button_pressed() -> void:
 	Global.set_game_level(Game.Level.Normal)
-	Global.goto_scene("res://Source/Board/Board.tscn")
+	Global.goto_scene("res://Source/SymbolMenu/SymbolMenu.tscn")
 	
 func on_hard_button_pressed() -> void:
 	Global.set_game_level(Game.Level.Hard)
-	Global.goto_scene("res://Source/Board/Board.tscn")
+	Global.goto_scene("res://Source/SymbolMenu/SymbolMenu.tscn")
 
 func setup_connections() -> void:
 	# warning-ignore:return_value_discarded

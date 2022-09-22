@@ -12,7 +12,7 @@ func on_mouse_entered() -> void:
 
 func on_pvp_button_button_pressed() -> void:
 	Global.set_game_mode(Game.Mode.PvP)
-	Global.goto_scene("res://Source/Board/Board.tscn")
+	Global.goto_scene("res://Source/SymbolMenu/SymbolMenu.tscn")
 	
 func on_pvai_button_pressed() -> void:
 	Global.set_game_mode(Game.Mode.PvAI)

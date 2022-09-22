@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Source/SymbolMenu/SymbolMenu.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sprites/O.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/X.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Themes/Main/theme.tres" type="Theme" id=4]
+[ext_resource path="res://Assets/Audio/hover.wav" type="AudioStream" id=5]
+
+[node name="SymbolMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="Background" type="ColorRect" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -153.0
+margin_top = -64.0
+margin_right = 153.0
+margin_bottom = 64.0
+custom_constants/separation = 50
+alignment = 1
+
+[node name="XButton" type="Button" parent="Background/HBoxContainer"]
+margin_right = 128.0
+margin_bottom = 128.0
+theme = ExtResource( 4 )
+icon = ExtResource( 3 )
+
+[node name="OButton" type="Button" parent="Background/HBoxContainer"]
+margin_left = 178.0
+margin_right = 306.0
+margin_bottom = 128.0
+theme = ExtResource( 4 )
+icon = ExtResource( 2 )
