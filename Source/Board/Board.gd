@@ -1,5 +1,7 @@
 class_name Board extends Node2D
 
+const BOARD_SIZE: int = 3
+
 onready var turn_label: Label = $TurnLabel
 
 var board: Array = []
@@ -61,8 +63,8 @@ func _build_board() -> void:
 	print(board)
 	
 func _reset_game() -> void:
-	for line in range(3):
-		for column in range(3):
+	for line in range(BOARD_SIZE):
+		for column in range(BOARD_SIZE):
 			board[line][column] = Player.Symbol.None
 	for tile in tiles:
 		tile.set_symbol(Player.Symbol.None)
@@ -98,31 +100,58 @@ func on_boardtile_selected(line: int, column: int) -> void:
 	
 	if Global.game_mode == Game.Mode.PvAI:
 		if !game_over:
-			var board_copy = board.duplicate()
-			var move = minimax.get_move(board_copy)
+			var move = _get_move()
 			board[move.x][move.y] = current_player.get_symbol()
 			_update_tile_symbol(move.x, move.y, current_player.get_symbol())
 			_check_winner()
 			_update_current_player()
 
+func _get_move() -> Vector2:
+	match(Global.game_level):
+		Game.Level.Easy:
+			var percent = randf()
+			if percent <= 0.25:
+				print("Minimax")
+				return _get_minimax_move()
+			else:
+				print("Dummy")
+				return _get_dummy_move()
+		Game.Level.Normal:
+			var percent = randf()
+			if percent <= 0.5:
+				print("Minimax")
+				return _get_minimax_move()
+			else:
+				print("Dummy")
+				return _get_dummy_move()
+		_:
+			return _get_minimax_move()
+
+func _get_dummy_move() -> Vector2:
+	return Dummy.get_move(tiles)
+	
+func _get_minimax_move() -> Vector2:
+	var board_copy = board.duplicate()
+	return minimax.get_move(board_copy)
+
 func _check_winner():
 	for line in range(3):
 		if _check_line(line):
-			print("Winner Line")
+			print("Winner(Line)")
 			print(current_player)
 			Global.set_last_winner(current_player)
 			game_over = true
 			return
 	for column in range(3):
 		if _check_column(column):
-			print("Winner Column")
+			print("Winner(Column)")
 			print(current_player)
 			Global.set_last_winner(current_player)
 			game_over = true
 			return
 	for diagonal in [0, 2]:
 		if _check_diagonal(diagonal):
-			print("Winner Diagonal")
+			print("Winner(Diagonal)")
 			print(current_player)
 			Global.set_last_winner(current_player)
 			game_over = true
@@ -134,19 +163,19 @@ func _check_winner():
 		return
 
 func _check_line(line) -> bool:
-	for column in range(3):
+	for column in range(BOARD_SIZE):
 		if board[line][column] != current_player.get_symbol():
 			return false
 	return true
 	
 func _check_column(column) -> bool:
-	for line in range(3):
+	for line in range(BOARD_SIZE):
 		if (board[line][column] != current_player.get_symbol()):
 			return false
 	return true
 
 func _check_diagonal(diagonal) -> bool:
-	for line in range(3):
+	for line in range(BOARD_SIZE):
 		var column
 		if diagonal == 0:
 			column = line
@@ -158,8 +187,8 @@ func _check_diagonal(diagonal) -> bool:
 
 func _check_empty_tiles() -> bool:
 	var empty_tiles = 0
-	for line in range(3):
-		for column in range(3):
+	for line in range(BOARD_SIZE):
+		for column in range(BOARD_SIZE):
 			if board[line][column] == Player.Symbol.None:
 				empty_tiles += 1
 	if empty_tiles == 0:
