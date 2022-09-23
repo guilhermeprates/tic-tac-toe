@@ -1,11 +1,11 @@
 extends Node
 
-var game_level: int = 1
-var game_mode: int = 0
+var game_level: int = Game.Level.Normal
+var game_mode: int = Game.Mode.PvAI
 var player_one_score: int = 0
 var player_two_score: int = 0
-var player_one_symbol: int = -1
-var player_two_symbol: int = -1
+var player_one_symbol: int = Player.Symbol.None
+var player_two_symbol: int = Player.Symbol.None
 var last_winner: Player = null
 var current_scene = null
 
@@ -38,13 +38,14 @@ func set_last_winner(new_value: Player) -> void:
 	last_winner = new_value
 
 func reset() -> void:
+	game_level = Game.Level.Normal
+	game_mode = Game.Mode.PvAI
 	player_one_score = 0
 	player_two_score = 0
-	player_one_symbol = -1
-	player_two_symbol = -1
+	player_one_symbol = Player.Symbol.None
+	player_two_symbol = Player.Symbol.None
 	last_winner = null
-	game_level = 1
-	game_mode = 0
+
 	
 func quit() -> void:
 	get_tree().quit()

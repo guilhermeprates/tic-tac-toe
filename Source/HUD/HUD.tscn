@@ -34,6 +34,7 @@ align = 1
 valign = 1
 
 [node name="PlayerOneScoreLabel" type="Label" parent="HUD"]
+visible = false
 margin_right = 300.0
 margin_bottom = 100.0
 theme = ExtResource( 2 )
@@ -44,6 +45,7 @@ autowrap = true
 clip_text = true
 
 [node name="PlayerTwoScoreLabel" type="Label" parent="HUD"]
+visible = false
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -300.0

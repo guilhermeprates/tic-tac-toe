@@ -18,10 +18,10 @@ A tic-tac-toe game made with [Godot](https://godotengine.org/).
 
 - [x] AI (Minimax)
 
-- [ ] Difficulty levels
+- [x] Difficulty levels
 
 - [x] PVP
 
-- [ ] Sound
+- [x] Sound
 
 - [x] Custom assets
