@@ -1,4 +1,4 @@
-class_name Board extends Node2D
+class_name Board extends Area2D
 
 const BOARD_SIZE: int = 3
 
@@ -12,15 +12,23 @@ var player_one: Player
 var player_two: Player
 var current_player: Player
 var winner: Player
+var game_mode: int
 
 func _ready() -> void:
+	game_mode = Global.game_mode
 	_start_game()
 	_build_board()
 
 func _process(_delta: float) -> void:
-	if game_over: 
-		_reset_game()
-		Global.goto_scene("res://Source/GameOver/GameOver.tscn")
+	if !game_over && game_mode == Game.Mode.PvAI: 
+		if current_player == player_two:
+			_ia_move()
+
+func _input_event(_viewport: Object, event: InputEvent, _shape_idx: int) -> void:
+	if event.is_action_pressed("mouse_left_click"):
+		if game_over:
+			_reset_game()
+			Global.goto_scene("res://Source/GameOver/GameOver.tscn")\
 
 func _start_game() -> void:
 	match (Global.game_mode):
@@ -36,7 +44,7 @@ func _start_pvp_game():
 	player_two = Player.new()
 	player_two.set_id(2)
 	player_two.set_symbol(Global.player_two_symbol)
-	current_player = player_one
+	_radomize_first()
 
 func _start_pvai_game():
 	player_one = Player.new()
@@ -46,7 +54,14 @@ func _start_pvai_game():
 	player_two.set_id(2)
 	player_two.set_symbol(Global.player_two_symbol)
 	minimax = Minimax.new(player_two, player_one)
-	current_player = player_one
+	_radomize_first()
+
+func _radomize_first() -> void:
+	var players = [player_one, player_two]
+	var random_number_generator = RandomNumberGenerator.new()
+	random_number_generator.randomize()
+	var random = random_number_generator.randi_range(0, players.size() -1)
+	current_player = players[random]
 
 func _build_board() -> void:
 	board = []
@@ -88,7 +103,10 @@ func _update_tile_symbol(line: int, column: int, symbol: int) -> void:
 
 func on_boardtile_selected(line: int, column: int) -> void:
 	print("%d,%d" % [line, column])
-
+	
+	if game_over:
+		return
+		
 	var symbol = board[line][column]
 	if symbol == Player.Symbol.None:
 		board[line][column] = current_player.get_symbol()
@@ -97,14 +115,13 @@ func on_boardtile_selected(line: int, column: int) -> void:
 		_update_current_player()
 	else:
 		return
-	
-	if Global.game_mode == Game.Mode.PvAI:
-		if !game_over:
-			var move = _get_move()
-			board[move.x][move.y] = current_player.get_symbol()
-			_update_tile_symbol(move.x, move.y, current_player.get_symbol())
-			_check_winner()
-			_update_current_player()
+
+func _ia_move() -> void:
+	var move = _get_move()
+	board[move.x][move.y] = current_player.get_symbol()
+	_update_tile_symbol(move.x, move.y, current_player.get_symbol())
+	_check_winner()
+	_update_current_player()
 
 func _get_move() -> Vector2:
 	match(Global.game_level):
