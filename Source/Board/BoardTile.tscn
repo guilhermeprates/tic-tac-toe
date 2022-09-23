@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Source/Board/BoardTile.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Sprites/X.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Sprites/O.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Audio/click.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 72.5, 72.5 )
@@ -10,6 +11,9 @@ extents = Vector2( 72.5, 72.5 )
 [node name="BoardTile" type="Area2D"]
 script = ExtResource( 1 )
 symbol_textures = [ null, ExtResource( 2 ), ExtResource( 3 ) ]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 73, 73 )
